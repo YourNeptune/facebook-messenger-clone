@@ -1,3 +1,4 @@
+import { Button, FormControl, FormHelperText, Input, InputLabel } from '@material-ui/core';
 import { useState } from 'react';
 import './App.css';
 
@@ -15,8 +16,11 @@ function App() {
     <div className="App">
     <h1>Facebook Messages Clone</h1>
       <form>
-        <input value={input} onChange={e => setInput(e.target.value)}/>
-        <button type='submit' onClick={sendMessages}>Send</button>
+        <FormControl>
+          <InputLabel>Email address</InputLabel>
+          <Input value={input} onChange={e => setInput(e.target.value)} />
+        </FormControl>
+        <Button variant="contained" color="primary" type='submit'  onClick={sendMessages} disabled={!input}>Send</Button>
       </form>
       {messages.map(msg => {
         return (
