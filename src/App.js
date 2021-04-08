@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Facebook Messages Clone</h1>
+      <h1>Facebook Messenger Clone</h1>
       <form>
         <FormControl>
           <InputLabel>Enter a message</InputLabel>
