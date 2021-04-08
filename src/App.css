@@ -14,12 +14,12 @@
   padding: 2em;
   z-index: 1;
   width: 80%;
-  background-color: #c2c2c4a8 !important;
+  background-color: #f0f0f0cf !important;
   border-radius: 60px;
 }
 
 .app__form:hover {
-  background-color: #c2c2c4 !important;
+  background-color: #f0f0f0 !important;
 }
 
 .app__formControl {
@@ -46,5 +46,5 @@
 }
 
 .msg_guestCard {
-  background-color: #e9e9eb !important;
+  background-color: #F0F0F0 !important;
 }

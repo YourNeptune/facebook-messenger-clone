@@ -1,8 +1,7 @@
 import {
   FormControl,
   IconButton,
-  Input,
-  InputLabel,
+  Input
 } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import "./App.css";
@@ -24,13 +23,12 @@ function App() {
       text: input,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
-    // setMessages([...messages, {username: username, text: input }]);
     setInput("");
   };
 
   useEffect(() => {
     db.collection("messages")
-      .orderBy("timestamp", "desc")
+      .orderBy("timestamp", 'desc')
       .onSnapshot((snapshot) => {
         setMessages(
           snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
@@ -59,7 +57,7 @@ function App() {
               placeholder="Aa"
             />
             <IconButton
-              className="formControl__button"
+              // className="formControl__button"
               variant="contained"
               color="primary"
               type="submit"
