@@ -1,10 +1,16 @@
-import { Button, FormControl, Input, InputLabel } from "@material-ui/core";
+import {
+  FormControl,
+  IconButton,
+  Input,
+  InputLabel,
+} from "@material-ui/core";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Message from "./Components/Message";
 import db from "./firebase";
 import firebase from "firebase";
 import FlipMove from "react-flip-move";
+import SendIcon from "@material-ui/icons/Send";
 
 function App() {
   const [input, setInput] = useState("");
@@ -24,9 +30,11 @@ function App() {
 
   useEffect(() => {
     db.collection("messages")
-      .orderBy("timestamp", 'desc')
+      .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
-        setMessages(snapshot.docs.map((doc) => ({id: doc.id, data: doc.data()})));
+        setMessages(
+          snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+        );
       });
   }, []);
 
@@ -36,26 +44,32 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Facebook Messenger Clone</h1>
-      <form>
+      <img
+        src="https://facebookbrand.com/wp-content/uploads/2020/10/Logo_Messenger_NewBlurple-399x399-1.png?w=100&h=100"
+        alt="Messenger Logo"
+      />
+      <h1> Messenger </h1>
+      <form className="app__form">
         <FormControl>
           <InputLabel>Enter a message</InputLabel>
           <Input value={input} onChange={(e) => setInput(e.target.value)} />
         </FormControl>
-        <Button
+        <IconButton
           variant="contained"
           color="primary"
           type="submit"
           onClick={sendMessages}
           disabled={!input}
         >
-          Send
-        </Button>
+          <SendIcon />
+        </IconButton>
       </form>
 
       <FlipMove>
         {messages.map((message) => {
-          return <Message key={message.id} username={username} data={message.data} />;
+          return (
+            <Message key={message.id} username={username} data={message.data} />
+          );
         })}
       </FlipMove>
     </div>
