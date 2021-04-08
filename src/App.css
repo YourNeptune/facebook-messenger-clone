@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.app__img {
+  margin-top: 2em;
+}
+
 .form_container {
   display: flex;
   justify-content: center;
@@ -11,7 +15,6 @@
   position: fixed;
   bottom: 0;
   margin: 2em;
-  padding: 2em;
   z-index: 1;
   width: 80%;
   background-color: #f0f0f0cf !important;
@@ -29,6 +32,8 @@
 
 .formControl__input {
   flex-grow: 1;
+  margin-bottom: 1em;
+  margin-left: 1em;
 }
 
 .msg {
@@ -46,5 +51,11 @@
 }
 
 .msg_guestCard {
-  background-color: #F0F0F0 !important;
+  background-color: #f0f0f0 !important;
+}
+
+@media all and (min-width: 420px) {
+  .app__form {
+    padding: 1em;
+  }
 }
