@@ -49,21 +49,28 @@ function App() {
         alt="Messenger Logo"
       />
       <h1> Messenger </h1>
-      <form className="app__form">
-        <FormControl>
-          <InputLabel>Enter a message</InputLabel>
-          <Input value={input} onChange={(e) => setInput(e.target.value)} />
-        </FormControl>
-        <IconButton
-          variant="contained"
-          color="primary"
-          type="submit"
-          onClick={sendMessages}
-          disabled={!input}
-        >
-          <SendIcon />
-        </IconButton>
-      </form>
+      <div className='form_container'>
+        <form className="app__form">
+          <FormControl className="app__formControl">
+            <Input
+              className="formControl__input"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Aa"
+            />
+            <IconButton
+              className="formControl__button"
+              variant="contained"
+              color="primary"
+              type="submit"
+              onClick={sendMessages}
+              disabled={!input}
+            >
+              <SendIcon />
+            </IconButton>
+          </FormControl>
+        </form>
+      </div>
 
       <FlipMove>
         {messages.map((message) => {

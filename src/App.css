@@ -2,14 +2,33 @@
   text-align: center;
 }
 
+.form_container {
+  display: flex;
+  justify-content: center;
+}
+
 .app__form {
   position: fixed;
   bottom: 0;
-  margin: 1em;
+  margin: 2em;
   padding: 2em;
   z-index: 1;
-  /* width: 90%; */
-  background-color: #e9e9eb !important;
+  width: 80%;
+  background-color: #c2c2c4a8 !important;
+  border-radius: 60px;
+}
+
+.app__form:hover {
+  background-color: #c2c2c4 !important;
+}
+
+.app__formControl {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.formControl__input {
+  flex-grow: 1;
 }
 
 .msg {
