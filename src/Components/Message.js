@@ -1,19 +1,20 @@
 import { Card, CardContent, Typography } from "@material-ui/core";
+import { forwardRef } from "react";
 
-const Message = ({ username, msg }) => {
-  const isUser = username === msg.username;
+const Message = forwardRef(({ username, data }, ref) => {
+  const isUser = username === data.username;
 
   return (
-    <div className={`msg ${isUser && "msg_user"}`}>
+    <div ref={ref} className={`msg ${isUser && "msg_user"}`}>
       <Card className={isUser ? "msg_userCard" : "msg_guestCard"}>
         <CardContent>
           <Typography variant="h5">
-            {msg.username}: {msg.text}
+            {data.username}: {data.text}
           </Typography>
         </CardContent>
       </Card>
     </div>
   );
-};
+});
 
 export default Message;
