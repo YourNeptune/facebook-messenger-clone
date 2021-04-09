@@ -1,20 +1,18 @@
-import {
-  FormControl,
-  IconButton,
-  Input
-} from "@material-ui/core";
 import { useEffect, useState } from "react";
 import "./App.css";
-import Message from "./Components/Message";
 import db from "./firebase";
 import firebase from "firebase";
 import FlipMove from "react-flip-move";
-import SendIcon from "@material-ui/icons/Send";
+import Message from "./Components/Message";
+import Form from "./Components/Form";
+import Logo from "./Components/Logo";
+import UsernameForm from "./Components/UsernameForm";
 
 function App() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [username, setUsername] = useState("");
+  const [startChat, setStartChat] = useState(false);
 
   const sendMessages = (e) => {
     e.preventDefault();
@@ -26,9 +24,15 @@ function App() {
     setInput("");
   };
 
+  const sendUsername = () => {
+    setStartChat(true);
+  };
+
+  const onChange = (e) => setInput(e.target.value);
+
   useEffect(() => {
     db.collection("messages")
-      .orderBy("timestamp", 'desc')
+      .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
         setMessages(
           snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
@@ -36,50 +40,33 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
-    setUsername(prompt("Enter your username"));
-  }, []);
-
   return (
     <div>
-      <div className="app__title">
-        <img
-          className="app__img"
-          src="https://facebookbrand.com/wp-content/uploads/2020/10/Logo_Messenger_NewBlurple-399x399-1.png?w=100&h=100"
-          alt="Messenger Logo"
+      <Logo />
+      {!startChat && (
+        <UsernameForm
+          username={username}
+          onChange={(e) => setUsername(e.target.value)}
+          onSend={sendUsername}
         />
-        <h1> Messenger </h1>
-      </div>
-      <div className="form_container">
-        <form className="app__form">
-          <FormControl className="app__formControl">
-            <Input
-              className="formControl__input"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Aa"
-            />
-            <IconButton
-              // className="formControl__button"
-              variant="contained"
-              color="primary"
-              type="submit"
-              onClick={sendMessages}
-              disabled={!input}
-            >
-              <SendIcon />
-            </IconButton>
-          </FormControl>
-        </form>
-      </div>
+      )}
 
-      <FlipMove>
-        {messages.map((message) => {
-          return (
-            <Message key={message.id} username={username} data={message.data} />
-          );
-        })}
-      </FlipMove>
+      {startChat && (
+        <div>
+          <Form input={input} onChange={onChange} onSend={sendMessages} />
+          <FlipMove>
+            {messages.map((message) => {
+              return (
+                <Message
+                  key={message.id}
+                  username={username}
+                  data={message.data}
+                />
+              );
+            })}
+          </FlipMove>
+        </div>
+      )}
     </div>
   );
 }
