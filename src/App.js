@@ -7,6 +7,7 @@ import Message from "./Components/Message";
 import Form from "./Components/Form";
 import Logo from "./Components/Logo";
 import UsernameForm from "./Components/UsernameForm";
+import ExitButton from "./Components/ExitButton";
 
 function App() {
   const [input, setInput] = useState("");
@@ -29,6 +30,11 @@ function App() {
   };
 
   const onChange = (e) => setInput(e.target.value);
+
+  const exit = () => {
+    setStartChat(false)
+    setUsername('')
+  }
 
   useEffect(() => {
     db.collection("messages")
@@ -53,6 +59,7 @@ function App() {
 
       {startChat && (
         <div>
+          <ExitButton onClick={exit}/>
           <Form input={input} onChange={onChange} onSend={sendMessages} />
           <FlipMove>
             {messages.map((message) => {
