@@ -68,11 +68,14 @@
   width: fit-content;
 }
 
-.username__input{
+.username__input {
   margin-right: 0.5em !important;
 }
 
-.username__btn{
+.exit_btn {
+  position: absolute;
+  top: 1em;
+  left: 1em;
 }
 
 @media all and (min-width: 420px) {
@@ -86,5 +89,11 @@
 
   .msg {
     max-width: 30em;
+  }
+
+  .exit_btn {
+    position: absolute;
+    top: 2em;
+    left: 2em;
   }
 }

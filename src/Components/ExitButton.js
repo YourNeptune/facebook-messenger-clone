@@ -3,9 +3,9 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const ExitButton = ({ onClick }) => {
   return (
-    <div>
+    <div className="exit_btn">
       <IconButton onClick={onClick}>
-        <ExitToAppIcon />
+        <ExitToAppIcon fontSize="large" />
       </IconButton>
     </div>
   );
