@@ -8,8 +8,9 @@ const UsernameForm = ({username, onChange, onSend}) => {
           variant="outlined"
           value={username}
           onChange={onChange}
+          className='username__input'
         />
-        <Button type='submit' variant="contained" color="primary" onClick={onSend}>
+        <Button className='username__btn' type='submit' variant="contained" color="primary" onClick={onSend}>
           Chat Now
         </Button>
       </form>

@@ -68,6 +68,13 @@
   width: fit-content;
 }
 
+.username__input{
+  margin-right: 0.5em !important;
+}
+
+.username__btn{
+}
+
 @media all and (min-width: 420px) {
   .app__form {
     padding: 1em;
