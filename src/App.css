@@ -78,6 +78,41 @@
   left: 1em;
 }
 
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: black;
+  color: #fff;
+  padding: 20px;
+  border-radius: 6px;
+
+  position: absolute;
+  z-index: 1;
+
+  top: 120%;
+  left: 50%;
+  margin-left: -160px;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%; 
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
 @media all and (min-width: 420px) {
   .app__form {
     padding: 1em;
